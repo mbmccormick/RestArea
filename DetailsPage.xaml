@@ -1,0 +1,85 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="RestArea.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="REST AREA" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="rest area detail" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4">
+                <TextBlock Name="txtDistance" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Tap="txtDistance_Tap"/>
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Text="tap here for directions" Margin="12,-6,12,0" Tap="txtDistance_Tap"/>
+            </StackPanel>
+            
+            <Image Name="imgRestrooms" Grid.Row="2" Grid.Column="0" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/restrooms.png" />
+            <Image Name="imgRV" Grid.Row="2" Grid.Column="1" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/RV.png" />
+            <Image Name="imgPicnic" Grid.Row="2" Grid.Column="2" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/picnic.png" />
+            <Image Name="imgPets" Grid.Row="2" Grid.Column="3" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/pets.png" />
+            
+            <TextBlock Grid.Row="3" Grid.Column="0" Width="100" TextAlignment="Center" Text="Restrooms" />
+            <TextBlock Grid.Row="3" Grid.Column="1" Width="100" TextAlignment="Center" Text="RV Friendly" />
+            <TextBlock Grid.Row="3" Grid.Column="2" Width="100" TextAlignment="Center" Text="Picnic Area" />
+            <TextBlock Grid.Row="3" Grid.Column="3" Width="100" TextAlignment="Center" Text="Pet Area" />
+
+            <Image Name="imgHandicap" Grid.Row="5" Grid.Column="0" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/handicap.png" />
+            <Image Name="imgVending" Grid.Row="5" Grid.Column="1" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/vending.png" />
+            <Image Name="imgFood" Grid.Row="5" Grid.Column="2" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/food.png" />
+            <Image Name="imgGas" Grid.Row="5" Grid.Column="3" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/gas.png" />
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Width="100" TextAlignment="Center" Text="Accessible" />
+            <TextBlock Grid.Row="6" Grid.Column="1" Width="100" TextAlignment="Center" Text="Vending" />
+            <TextBlock Grid.Row="6" Grid.Column="2" Width="100" TextAlignment="Center" Text="Food" />
+            <TextBlock Grid.Row="6" Grid.Column="3" Width="100" TextAlignment="Center" Text="Gas" />
+        </Grid>
+    </Grid>
+
+    <!--Sample code showing usage of ApplicationBar-->
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
+                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
+</phone:PhoneApplicationPage>
