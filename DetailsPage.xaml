@@ -44,8 +44,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4">
-                <TextBlock Name="txtDistance" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Tap="txtDistance_Tap"/>
-                <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Text="tap here for directions" Margin="12,-6,12,0" Tap="txtDistance_Tap"/>
+                <TextBlock Name="txtDescription" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Tap="txtDescription_Tap"/>
+                <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Text="tap here for directions" Margin="12,-6,12,0" Tap="txtDescription_Tap"/>
             </StackPanel>
             
             <Image Name="imgRestrooms" Grid.Row="2" Grid.Column="0" Width="92" Height="92" Margin="12" Opacity="0.2" Source="Resources/restrooms.png" />

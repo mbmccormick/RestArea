@@ -25,7 +25,7 @@ namespace RestArea
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
         {
             this.PageTitle.Text = NavigationContext.QueryString["name"];
-            this.txtDistance.Text = NavigationContext.QueryString["distance"];
+            this.txtDescription.Text = NavigationContext.QueryString["description"];
 
             if (NavigationContext.QueryString["options"].Contains("RR"))
                 this.imgRestrooms.Opacity = 1.0;
@@ -47,7 +47,7 @@ namespace RestArea
             base.OnNavigatedTo(e);
         }
 
-        private void txtDistance_Tap(object sender, GestureEventArgs e)
+        private void txtDescription_Tap(object sender, GestureEventArgs e)
         {
             BingMapsDirectionsTask bingMapsDirectionsTask = new BingMapsDirectionsTask();
 

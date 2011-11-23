@@ -38,7 +38,13 @@ namespace RestArea
             set;
         }
 
-        public string Distance
+        public string Description
+        {
+            get;
+            set;
+        }
+
+        public double Distance
         {
             get;
             set;

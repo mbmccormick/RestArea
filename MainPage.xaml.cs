@@ -64,13 +64,17 @@ namespace RestArea
             this.mapRestArea.Children.Clear();
             this.mapRestArea.SetView(e.Position.Location, 10.0);
 
-            List<RestAreaModel> refined = database.OrderBy(r => Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, r.Latitude, r.Longitude)).Take(25).ToList();
+            // calculate distances
+            foreach (RestAreaModel r in database)
+            {
+                r.Distance = Utilities.ConvertToMiles(Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, r.Latitude, r.Longitude));
+                r.Description = r.Distance.ToString("0.00") + " miles away";
+            }
+
+            // add locations to the map
+            List<RestAreaModel> refined = database.OrderBy(r => r.Distance).Take(25).ToList();
             foreach (RestAreaModel r in refined)
             {
-                // setup the list display text
-                r.Distance = Utilities.ConvertToMiles(Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, r.Latitude, r.Longitude)).ToString("0.00") + " miles away";
-
-                // add location to the map
                 Pushpin p = new Pushpin();
                 p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
                 p.Background = new SolidColorBrush(Color.FromArgb(255, 3, 94, 159));
@@ -94,14 +98,14 @@ namespace RestArea
         {
             RestAreaModel r = (RestAreaModel)((TextBlock)e.OriginalSource).DataContext;
 
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&distance=" + r.Distance + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&description=" + r.Description + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
         }
 
         private void Pushpin_Tap(object sender, GestureEventArgs e)
         {
             RestAreaModel r = database.Where(z => z.Name.Contains(((TextBlock)e.OriginalSource).DataContext.ToString())).Single<RestAreaModel>();
 
-            NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&distance=" + r.Distance + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
+            NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&description=" + r.Description + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
         }
 
         private void LoadDatabase()
@@ -114,7 +118,7 @@ namespace RestArea
 
                 r.Latitude = Convert.ToDouble(row[1]);
                 r.Longitude = Convert.ToDouble(row[0]);
-                r.Name = row[2].Replace("REST AREA-", "").Replace("REST AREA", "").Replace("WELCOME CENTER-", "").Replace("WELCOME CENTER", "").Replace("SERVICE PLAZA-", "").Replace("SERVICE PLAZA", "").Replace("TRUCK PARKING", "").Replace("TRUCK", "").Replace("FOLLOW SIGNS", "").Replace("LEFT EXIT", "").Replace("TURNOUT", "").Trim();
+                r.Name = row[2].Replace("REST AREA-", "").Replace("REST AREA", "").Replace("WELCOME CENTER-", "").Replace("WELCOME CENTER", "").Replace("SERVICE PLAZA-", "").Replace("SERVICE PLAZA", "").Replace("TRUCK PARKING", "").Replace("TRUCK", "").Replace("-PARKING", "").Replace("FOLLOW SIGNS", "").Replace("LEFT EXIT", "").Replace("TURNOUT", "").Trim();
                 r.Options = row[3];
 
                 database.Add(r);
