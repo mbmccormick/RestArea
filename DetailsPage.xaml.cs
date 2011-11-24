@@ -28,21 +28,45 @@ namespace RestArea
             this.txtDescription.Text = NavigationContext.QueryString["description"];
 
             if (NavigationContext.QueryString["options"].Contains("RR"))
+            {
                 this.imgRestrooms.Opacity = 1.0;
+                this.txtRestrooms.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("VM"))
+            {
                 this.imgVending.Opacity = 1.0;
+                this.txtVending.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("Food"))
+            {
                 this.imgFood.Opacity = 1.0;
+                this.txtFood.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("Gas"))
+            {
                 this.imgGas.Opacity = 1.0;
+                this.txtGas.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("HF"))
+            {
                 this.imgHandicap.Opacity = 1.0;
+                this.txtHandicap.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("RV"))
+            {
                 this.imgRV.Opacity = 1.0;
+                this.txtRV.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("PT"))
+            {
                 this.imgPicnic.Opacity = 1.0;
+                this.txtPicnic.Opacity = 1.0;
+            }
             if (NavigationContext.QueryString["options"].Contains("Pets"))
+            {
                 this.imgPets.Opacity = 1.0;
+                this.txtPets.Opacity = 1.0;
+            }
 
             base.OnNavigatedTo(e);
         }
@@ -56,7 +80,7 @@ namespace RestArea
 
             LabeledMapLocation end = new LabeledMapLocation(NavigationContext.QueryString["name"], new GeoCoordinate(Convert.ToDouble(NavigationContext.QueryString["lat2"]), Convert.ToDouble(NavigationContext.QueryString["lon2"])));
             bingMapsDirectionsTask.End = end;
-            
+
             bingMapsDirectionsTask.Show();
         }
     }

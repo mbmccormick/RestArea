@@ -17,7 +17,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Title="REST AREA">
             <controls:PivotItem Header="map view">
-                <my:Map x:Name="mapRestArea" Margin="-12,0,-12,-12" Mode="Road" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed"/>
+                <my:Map x:Name="mapRestArea" Margin="-12,0,-12,-12" Mode="Road" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" MapResolved="Map_MapResolved"/>
             </controls:PivotItem>
 
             <controls:PivotItem Header="list view">
@@ -33,6 +33,8 @@
                 </ListBox>
             </controls:PivotItem>
         </controls:Pivot>
+
+        <ProgressBar Height="4" Name="prgLoading" Visibility="Collapsed" Foreground="{StaticResource PhoneAccentBrush}" Margin="0,0,0,0" VerticalAlignment="Top" />
     </Grid>
 
 </phone:PhoneApplicationPage>

@@ -60,6 +60,8 @@ namespace RestArea
 
         void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
+            this.EnableProgressBar();
+
             // clear the map
             this.mapRestArea.Children.Clear();
             this.mapRestArea.SetView(e.Position.Location, 10.0);
@@ -108,6 +110,18 @@ namespace RestArea
             NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&description=" + r.Description + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
         }
 
+        private void EnableProgressBar()
+        {
+            this.prgLoading.IsIndeterminate = true;
+            this.prgLoading.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void DisableProgressBar()
+        {
+            this.prgLoading.Visibility = System.Windows.Visibility.Collapsed;
+            this.prgLoading.IsIndeterminate = false;
+        }
+
         private void LoadDatabase()
         {
             var tmp = CSVReader.FromStream(Application.GetResourceStream(new Uri("Model/database.csv", UriKind.Relative)).Stream);
@@ -123,6 +137,11 @@ namespace RestArea
 
                 database.Add(r);
             }
+        }
+
+        private void Map_MapResolved(object sender, EventArgs e)
+        {
+            this.DisableProgressBar();
         }
     }
 }

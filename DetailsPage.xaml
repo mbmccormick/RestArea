@@ -45,7 +45,7 @@
                 <TextBlock TextWrapping="Wrap" Style="{StaticResource PhoneTextSubtleStyle}" Text="tap here for directions" Margin="12,-6,12,0" Tap="txtDescription_Tap"/>
             </StackPanel>
 
-            <Canvas Name="imgRestrooms" Grid.Row="1" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgRestrooms" Grid.Row="1" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Top="5" Fill="{StaticResource PhoneAccentBrush}" Data="M56.674,0.833L56.674,91.756 48.129,91.756 48.129,0.833 56.674,0.833z" />
                 <Path Canvas.Top="5" Fill="{StaticResource PhoneAccentBrush}" Data="M52.403,46.267" />
                 <Path Canvas.Top="5" Fill="{StaticResource PhoneAccentBrush}" Data="M21.169,14.979C25.325,15.001 28.68,11.647 28.658,7.489 28.68,3.37 25.325,0.016 21.169,0 17.051,0.016 13.696,3.37 13.68,7.488 13.696,11.647 17.051,15 21.169,14.979L21.169,14.979z" />
@@ -56,54 +56,54 @@
                 <Path Canvas.Top="5" Fill="{StaticResource PhoneAccentBrush}" Data="M82.579,7.488" />
             </Canvas>
 
-            <Canvas Name="imgVending" Grid.Row="1" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgVending" Grid.Row="1" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M69.919,20.562C74.281,20.564 77.825,17.022 77.821,12.657 77.825,8.286 74.281,4.747 69.919,4.757 65.548,4.747 62.005,8.286 62.017,12.657 62.006,17.022 65.549,20.564 69.919,20.562L69.919,20.562z" />
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M59.74,35.111L59.788,95.496C59.803,101.522,68.686,101.469,68.665,95.355L68.712,60.216 70.432,60.216 70.432,95.311C70.412,101.453,79.4,101.607,79.406,95.497L79.406,34.832 80.986,34.832 80.986,56.496C80.966,61.702,88.02,61.702,88.004,56.589L88.004,32.927C88.021,26.541,83.28,22.79,78.289,22.793L64.203,22.793C60.866,22.792,58.445,24.112,56.394,27.024L49.28,37.39 36.962,37.39C31.981,37.389,32.258,44.428,36.87,44.41L51.094,44.41C52.2,44.428,53.555,44.013,54.348,42.828L59.74,35.111 59.74,35.111z" />
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M28.474,51.334" />
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M30.193,39.442L23.578,39.442 23.578,0 0,0 0,100 23.578,100 23.578,42.244 30.193,42.244z" />
             </Canvas>
 
-            <Canvas Name="imgFood" Grid.Row="1" Grid.Column="2" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgFood" Grid.Row="1" Grid.Column="2" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M99.772,23.34L91.574,87.882 63.896,87.882 55.724,23.34 89.526,23.34 96.217,0 100,1.062 93.599,23.327 99.772,23.34z" />
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M51.815,60.924C51.815,60.924,52.852,51.537,38.494,51.537L15.623,51.537C1.29,51.537,2.302,60.924,2.302,60.924L51.815,60.924z" />
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M2.302,78.47C2.302,78.47,1.29,87.882,15.623,87.882L38.494,87.882C52.852,87.882,51.815,78.47,51.815,78.47L2.302,78.47z" />
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M49.665,73.928C52.018,73.928 53.915,72.018 53.915,69.677 53.915,67.35 52.018,65.452 49.665,65.452L4.25,65.452C1.91,65.453 0,67.35 0,69.677 0,72.018 1.91,73.928 4.25,73.928L49.665,73.928z" />
             </Canvas>
 
-            <TextBlock Grid.Row="2" Grid.Column="0" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="Restrooms" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="Vending" />
-            <TextBlock Grid.Row="2" Grid.Column="2" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="Food" />
+            <TextBlock Name="txtRestrooms" Grid.Row="2" Grid.Column="0" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="Restrooms" />
+            <TextBlock Name="txtVending" Grid.Row="2" Grid.Column="1" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="Vending" />
+            <TextBlock Name="txtFood" Grid.Row="2" Grid.Column="2" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="Food" />
 
-            <Canvas Name="imgGas" Grid.Row="3" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgGas" Grid.Row="3" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Left="20" Fill="{StaticResource PhoneAccentBrush}" Data="M51.819,92.837L45.803,92.837 45.803,43.237C47.529,43.237,47.395,44.032,47.395,44.56L47.395,83.155C47.395,88.194 51.109,91.642 55.484,91.642 59.994,91.642 63.441,88.062 63.441,83.288 63.441,78.511 57.077,64.721 57.077,60.212L57.077,23.342C57.077,20.556,56.016,18.168,54.557,16.974L45.803,9.814 45.803,4.11C45.803,1.859,43.946,0,41.691,0L10.127,0C7.873,0,6.016,1.859,6.016,4.11L6.016,92.837 0,92.837 0,100 51.819,100 51.819,92.837z M37.845,27.851L13.974,27.851C12.912,27.851,11.853,26.922,11.853,25.731L11.853,7.427C11.853,6.236,12.912,5.306,13.974,5.306L37.845,5.306C38.907,5.306,39.968,6.236,39.968,7.427L39.968,25.732C39.968,26.922,38.907,27.851,37.845,27.851z M55.484,87.798C52.963,87.798,51.373,85.942,51.373,83.155L51.373,40.583C51.373,39.124,49.65,38.46,48.06,38.46L45.804,38.46 45.804,15.252C46.865,16.047,47.659,16.975,47.659,18.038L47.659,25.731 52.964,25.731 52.964,58.885C52.964,67.238 59.597,78.511 59.597,83.288 59.597,85.809 58.004,87.798 55.484,87.798z" />
             </Canvas>
 
-            <Canvas Name="imgHandicap" Grid.Row="3" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgHandicap" Grid.Row="3" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M61.075,65.383C61.077,65.529 61.086,65.671 61.086,65.817 61.086,80.65 49.018,92.718 34.184,92.718 19.351,92.718 7.282,80.65 7.282,65.817 7.282,56.851 11.695,48.901 18.458,44.01L17.543,35.972C7.087,41.825 0,53.006 0,65.816 0,84.666 15.334,100 34.184,100 50.163,100 63.611,88.979 67.338,74.141L61.075,65.383z" />
                 <Ellipse Fill="{StaticResource PhoneAccentBrush}" Width="17.396" Height="17.396" Canvas.Left="26.097" Canvas.Top="0" />
                 <Path Canvas.Left="5" Fill="{StaticResource PhoneAccentBrush}" Data="M85.867,76.098L66.35,48.807C65.328,47.378 63.624,46.702 61.893,46.85 61.764,46.838 61.635,46.827 61.504,46.827L39.209,46.827 38.656,41.973 55.228,41.973C57.155,41.973 58.717,40.411 58.717,38.484 58.717,36.557 57.155,34.995 55.228,34.995L37.862,34.995 36.955,27.025C36.425,22.363 32.215,19.014 27.554,19.545 22.892,20.076 19.543,24.285 20.074,28.946L22.636,51.455C23.132,55.808 26.832,59.012 31.114,58.988 31.128,58.988 31.142,58.991 31.157,58.991L60.329,58.991 77.067,82.394C78.665,84.631 81.933,85.035 84.364,83.295 86.793,81.557 87.467,78.334 85.867,76.098z" />
             </Canvas>
 
-            <Canvas Name="imgRV" Grid.Row="3" Grid.Column="2" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgRV" Grid.Row="3" Grid.Column="2" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Top="25" Fill="{StaticResource PhoneAccentBrush}" Data="M41.283,22.673C43.139,22.673,44.65,21.151,44.65,19.304L44.65,13.684C44.65,11.838,43.139,10.316,41.283,10.316L15.915,10.316C14.058,10.316,12.548,11.838,12.548,13.684L12.548,19.304C12.548,21.15,14.058,22.673,15.915,22.673L41.283,22.673z M74.764,22.647C76.633,22.647,78.131,21.126,78.131,19.28L78.131,13.684C78.131,11.838,76.635,10.316,74.764,10.316L63.056,10.316C61.199,10.316,59.689,11.838,59.689,13.684L59.689,19.28C59.689,21.125,61.199,22.647,63.056,22.647L74.764,22.647z M31.229,49.383L12.056,49.383C5.405,49.383,0.0239999999999991,43.989,0.0239999999999991,37.351L0,16.333C0,7.309,7.31,0,16.321,0L71.829,0C80.841,0,88.162,7.309,88.162,16.333L88.184,46.002 96.682,46.002C98.515,46.002,99.999,47.524,99.999,49.357L56.896,49.357C56.476,42.611 50.917,37.267 44.063,37.267 37.209,37.268 31.648,42.612 31.229,49.383" />
                 <Path Canvas.Top="25" Fill="{StaticResource PhoneAccentBrush}" Data="M44.064,54.213C46.293,54.213 48.091,52.427 48.091,50.197 48.091,47.967 46.293,46.17 44.064,46.17 41.847,46.17 40.049,47.968 40.049,50.197 40.049,52.426 41.847,54.213 44.064,54.213 M34.8,50.198C34.8,45.068 38.935,40.923 44.064,40.923 49.193,40.923 53.327,45.069 53.327,50.198 53.327,55.314 49.193,59.471 44.064,59.471 38.934,59.471 34.8,55.315 34.8,50.198" />
             </Canvas>
 
-            <TextBlock Grid.Row="4" Grid.Column="0" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="Gas" />
-            <TextBlock Grid.Row="4" Grid.Column="1" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="Accessible" />
-            <TextBlock Grid.Row="4" Grid.Column="2" Width="100" Margin="0,0,0,18" TextAlignment="Center" Text="RV Friendly" />
+            <TextBlock Name="txtGas" Grid.Row="4" Grid.Column="0" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="Gas" />
+            <TextBlock Name="txtHandicap" Grid.Row="4" Grid.Column="1" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="Accessible" />
+            <TextBlock Name="txtRV" Grid.Row="4" Grid.Column="2" Width="100" Margin="0,0,0,18" Opacity="0.2" TextAlignment="Center" Text="RV Friendly" />
 
-            <Canvas Name="imgPicnic" Grid.Row="5" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgPicnic" Grid.Row="5" Grid.Column="0" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Canvas.Top="18" Fill="{StaticResource PhoneAccentBrush}" Data="M100,31.422L73.82,31.422 66.778,7.338 80.663,7.326 80.663,0 19.104,0 19.094,7.38 33.547,7.369 26.526,31.379 0,31.379 0,37.631 24.631,37.631 15.57,68.252 26.21,68.252 35.242,37.631 64.654,37.631 73.579,68.252 84.683,68.252 75.579,37.673 100,37.673 100,31.422 100,31.422 100,31.422z M37.166,31.419L44.24,7.346 55.872,7.335 62.744,31.419 37.166,31.419 37.166,31.419 37.166,31.419z" />
             </Canvas>
 
-            <Canvas Name="imgPets" Grid.Row="5" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.1">
+            <Canvas Name="imgPets" Grid.Row="5" Grid.Column="1" Width="100" Height="100" Margin="12" Opacity="0.2">
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M75.754,91.754C64.122,93.59,66.024,87.262,65.89,80.043L65.204,65.893 62.217,79.564C61.672,82.158 60.987,84.536 64.663,86.44 67.253,88.688 64.331,91.888 61.542,91.477 53.024,91.754 54.258,86.101 54.994,82.092L55.473,76.302C55.816,72.358,56.566,69.902,56.768,64.389L55.618,61.401C46.43,59.02,40.094,57.249,32.954,53.439L27.84,54.118C25.529,54.46,26.148,57.184,25.874,58.952L25.127,63.779 20.899,74.74 20.568,75.692C20.289,76.446,20.357,79.437,21.454,80.996L23.691,85.557C25.461,88.147,25.935,94.544,21.176,92.495L17.635,91.005C15.122,89.984,13.073,82.977,12.199,77.872L12.268,70.721C10.085,70.046,9.198,82.912,10.085,85.557L12.268,92.232C12.939,94.4 10.428,95.154 8.658,95.154 4.504,95.154 2.666,90.936 1.782,87.394L1.107,84.748C0.0769999999999955,80.664,0.618999999999996,74.463,2.732,70.854L3.683,68.621C5.586,64.19 3.273,60.99 2.732,58.743 0.961999999999996,51.527 -0.468000000000004,44.518 4.503,37.576L4.849,37.101C4.705,36.559 3.273,35.406 2.389,32.684 0.481999999999996,26.551 -1.219,16.487 1.169,16.487L2.731,16.41C6.752,16.41,5.585,33.017,10.358,31.932L44.932,32.275 50.988,30.635C53.238,30.029,55.14,28.6,57.11,27.371L61.05,24.924C65.611,29.486 69.564,32.276 76.095,34.656 77.869,48.193 75.896,51.196 74.193,59.284L73.505,62.553C72.289,68.34,71.878,74.332,72.155,80.253L72.289,83.042C72.224,85.899 73.848,86.102 76.096,86.783 77.526,87.536 78.543,90.394 75.754,91.754L75.754,91.754 75.754,91.754z" />
                 <Path Fill="{StaticResource PhoneAccentBrush}" Data="M83.062,9.073C84.963,10.37,87.348,12.681,89.253,14.719L91.641,17.311C93.203,18.936,95.581,18.736,97.696,19.145L98.439,19.28C100.751,20.498,100.015,22.953,99.258,24.792L98.781,25.945C96.598,31.192,90.136,31.602,85.573,29.143L83.538,28.06 82.85,28.06 81.428,29.012 78.501,31.326C72.581,28.735,67.75,25.612,63.864,21.46L72.786,10.293 75.777,5.941 76.387,4.511 77.073,2.939C77.617,1.18 79.861,-0.524999999999999 81.503,0.150000000000001 83.062,0.836000000000001 84.083,3.824 83.672,5.399L83.264,7.169 83.062,9.073 83.062,9.073 83.062,9.073z" />
             </Canvas>
-            
-            <TextBlock Grid.Row="6" Grid.Column="0" Width="100" TextAlignment="Center" Text="Picnic Area" />
-            <TextBlock Grid.Row="6" Grid.Column="1" Width="100" TextAlignment="Center" Text="Pet Area" />
+
+            <TextBlock Name="txtPicnic" Grid.Row="6" Grid.Column="0" Width="100" Opacity="0.2" TextAlignment="Center" Text="Picnic Area" />
+            <TextBlock Name="txtPets" Grid.Row="6" Grid.Column="1" Width="100" Opacity="0.2" TextAlignment="Center" Text="Pet Area" />
         </Grid>
     </Grid>
 
