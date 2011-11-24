@@ -71,14 +71,14 @@ namespace RestArea
                 r.Description = r.Distance.ToString("0.00") + " miles away";
             }
 
-            // add locations to the map
             List<RestAreaModel> refined = database.OrderBy(r => r.Distance).Take(25).ToList();
             foreach (RestAreaModel r in refined)
             {
                 Pushpin p = new Pushpin();
                 p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
-                p.Background = (SolidColorBrush)Resources["PhoneAccentBrush"]; // new SolidColorBrush(Color.FromArgb(255, 3, 94, 159));
+                p.Background = (SolidColorBrush)Resources["PhoneAccentBrush"];
                 p.Content = r.Name;
+                p.DataContext = r;
                 p.Tap += new EventHandler<GestureEventArgs>(Pushpin_Tap);
 
                 this.mapRestArea.Children.Add(p);
@@ -103,7 +103,7 @@ namespace RestArea
 
         private void Pushpin_Tap(object sender, GestureEventArgs e)
         {
-            RestAreaModel r = database.Where(z => z.Name.Contains(((TextBlock)e.OriginalSource).DataContext.ToString())).Single<RestAreaModel>();
+            RestAreaModel r = (RestAreaModel)((Pushpin)sender).DataContext;
 
             NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&description=" + r.Description + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
         }

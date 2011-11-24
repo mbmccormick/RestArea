@@ -17,7 +17,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Title="REST AREA">
             <controls:PivotItem Header="map view">
-                <my:Map x:Name="mapRestArea" Margin="-12,0,-12,-12" Mode="Road" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed"/>
+                <my:Map x:Name="mapRestArea" Margin="-12,0,-12,-12" Mode="Road" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed"/>
             </controls:PivotItem>
 
             <controls:PivotItem Header="list view">
@@ -34,17 +34,5 @@
             </controls:PivotItem>
         </controls:Pivot>
     </Grid>
-
-    <!--Sample code showing usage of ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Button 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Button 2"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="MenuItem 1"/>
-                <shell:ApplicationBarMenuItem Text="MenuItem 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
 
 </phone:PhoneApplicationPage>
