@@ -77,7 +77,7 @@ namespace RestArea
             {
                 Pushpin p = new Pushpin();
                 p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
-                p.Background = new SolidColorBrush(Color.FromArgb(255, 3, 94, 159));
+                p.Background = (SolidColorBrush)Resources["PhoneAccentBrush"]; // new SolidColorBrush(Color.FromArgb(255, 3, 94, 159));
                 p.Content = r.Name;
                 p.Tap += new EventHandler<GestureEventArgs>(Pushpin_Tap);
 

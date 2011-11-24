@@ -29,20 +29,20 @@ namespace RestArea
 
             if (NavigationContext.QueryString["options"].Contains("RR"))
                 this.imgRestrooms.Opacity = 1.0;
-            if (NavigationContext.QueryString["options"].Contains("RV"))
-                this.imgRV.Opacity = 1.0;
-            if (NavigationContext.QueryString["options"].Contains("PT"))
-                this.imgPicnic.Opacity = 1.0;
-            if (NavigationContext.QueryString["options"].Contains("Pets"))
-                this.imgPets.Opacity = 1.0;
-            if (NavigationContext.QueryString["options"].Contains("HF"))
-                this.imgHandicap.Opacity = 1.0;
             if (NavigationContext.QueryString["options"].Contains("VM"))
                 this.imgVending.Opacity = 1.0;
             if (NavigationContext.QueryString["options"].Contains("Food"))
                 this.imgFood.Opacity = 1.0;
             if (NavigationContext.QueryString["options"].Contains("Gas"))
                 this.imgGas.Opacity = 1.0;
+            if (NavigationContext.QueryString["options"].Contains("HF"))
+                this.imgHandicap.Opacity = 1.0;
+            if (NavigationContext.QueryString["options"].Contains("RV"))
+                this.imgRV.Opacity = 1.0;
+            if (NavigationContext.QueryString["options"].Contains("PT"))
+                this.imgPicnic.Opacity = 1.0;
+            if (NavigationContext.QueryString["options"].Contains("Pets"))
+                this.imgPets.Opacity = 1.0;
 
             base.OnNavigatedTo(e);
         }
