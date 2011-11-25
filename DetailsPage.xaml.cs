@@ -71,7 +71,7 @@ namespace RestArea
             base.OnNavigatedTo(e);
         }
 
-        private void txtDescription_Tap(object sender, GestureEventArgs e)
+        private void txtDescription_Tap(object sender, System.Windows.Input.GestureEventArgs e)
         {
             BingMapsDirectionsTask bingMapsDirectionsTask = new BingMapsDirectionsTask();
 
