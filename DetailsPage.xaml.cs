@@ -12,14 +12,25 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Tasks;
 using System.Device.Location;
+using RestArea.Common;
 
 namespace RestArea
 {
     public partial class DetailsPage : PhoneApplicationPage
     {
+        private GeoCoordinateWatcher watcher = null;
+        private GeoCoordinate location = null;
+
         public DetailsPage()
         {
             InitializeComponent();
+
+            // initialize the location service
+            watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
+            watcher.MovementThreshold = 200;
+            watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
+
+            watcher.Start();
         }
 
         protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
@@ -68,7 +79,16 @@ namespace RestArea
                 this.txtPets.Opacity = 1.0;
             }
 
+            location = new GeoCoordinate(Convert.ToDouble(NavigationContext.QueryString["lat2"]), Convert.ToDouble(NavigationContext.QueryString["lon2"]));
+
             base.OnNavigatedTo(e);
+        }
+
+        void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
+        {
+            // calculate distances
+            var dist = Utilities.ConvertToMiles(Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, location.Latitude, location.Longitude));
+            this.txtDescription.Text = dist.ToString("0.00") + " miles away";
         }
 
         private void txtDescription_Tap(object sender, System.Windows.Input.GestureEventArgs e)

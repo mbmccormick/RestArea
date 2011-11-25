@@ -13,7 +13,9 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    toolkit:TiltEffect.IsTiltEnabled="True"
+    shell:SystemTray.IsVisible="True"
+    Loaded="PhoneApplicationPage_Loaded">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Title="REST AREA" SelectionChanged="Pivot_SelectionChanged">
@@ -35,7 +37,6 @@
             </controls:PivotItem>
         </controls:Pivot>
 
-        <ProgressBar Height="4" Name="prgLoading" Visibility="Collapsed" Foreground="{StaticResource PhoneAccentBrush}" Margin="0,0,0,0" VerticalAlignment="Top" />
     </Grid>
 
     <toolkit:TransitionService.NavigationInTransition>

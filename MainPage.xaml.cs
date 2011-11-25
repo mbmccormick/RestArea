@@ -14,13 +14,15 @@ using Microsoft.Phone.Controls;
 using System.Device.Location;
 using RestArea.Common;
 using Microsoft.Phone.Controls.Maps;
+using Microsoft.Phone.Shell;
 
 namespace RestArea
 {
     public partial class MainPage : PhoneApplicationPage
     {
-        GeoCoordinateWatcher watcher = null;
-        List<RestAreaModel> database = null;
+        private ProgressIndicator progressIndicator = null;
+        private GeoCoordinateWatcher watcher = null;
+        private List<RestAreaModel> database = null;
 
         // Constructor
         public MainPage()
@@ -34,27 +36,19 @@ namespace RestArea
             // initialize the location service
             watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
             watcher.MovementThreshold = 200;
-            watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
             watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
 
             watcher.Start();
         }
 
-        void watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
+        private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
-            switch (e.Status)
+            // attach progress indicator
+            if (progressIndicator == null)
             {
-                case GeoPositionStatus.Disabled:
-                    break;
-
-                case GeoPositionStatus.Initializing:
-                    break;
-
-                case GeoPositionStatus.NoData:
-                    break;
-
-                case GeoPositionStatus.Ready:
-                    break;
+                progressIndicator = new ProgressIndicator();
+                progressIndicator.IsVisible = true;
+                SystemTray.ProgressIndicator = progressIndicator;
             }
         }
 
@@ -134,14 +128,14 @@ namespace RestArea
 
         private void EnableProgressBar()
         {
-            this.prgLoading.IsIndeterminate = true;
-            this.prgLoading.Visibility = System.Windows.Visibility.Visible;
+            if (progressIndicator != null)
+                progressIndicator.IsIndeterminate = true;
         }
 
         private void DisableProgressBar()
         {
-            this.prgLoading.Visibility = System.Windows.Visibility.Collapsed;
-            this.prgLoading.IsIndeterminate = false;
+            if (progressIndicator != null) 
+                progressIndicator.IsIndeterminate = false;
         }
 
         private void LoadDatabase()
