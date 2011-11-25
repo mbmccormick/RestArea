@@ -67,7 +67,7 @@ namespace RestArea
             }
 
             List<RestAreaModel> refined = database.OrderBy(r => r.Distance).Take(25).ToList();
-            foreach (RestAreaModel r in refined)
+            foreach (RestAreaModel r in refined.Reverse<RestAreaModel>())
             {
                 Pushpin p = new Pushpin();
                 p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
