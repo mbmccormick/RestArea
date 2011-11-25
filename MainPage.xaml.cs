@@ -93,6 +93,7 @@ namespace RestArea
             me.Content = "My Location";
 
             this.mapRestArea.Children.Add(me);
+            Map_MapPan(null, null);
         }
         
         private void Map_MapResolved(object sender, EventArgs e)
@@ -100,10 +101,21 @@ namespace RestArea
             this.DisableProgressBar();
         }
 
+        private void Map_MapPan(object sender, MapDragEventArgs e)
+        {
+            if (this.mapRestArea.IsDownloading == false)
+                this.DisableProgressBar();
+            else
+                this.EnableProgressBar();
+        }
+
         private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (((Pivot)sender).SelectedItem == this.pviMapView)
+            {
+                this.EnableProgressBar();
                 this.mapRestArea.SetView(watcher.Position.Location, 10.0);
+            }
         }
 
         private void StackPanel_Tap(object sender, GestureEventArgs e)
