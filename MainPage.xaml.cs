@@ -64,8 +64,7 @@ namespace RestArea
 
             // clear the map
             this.mapRestArea.Children.Clear();
-            this.mapRestArea.SetView(e.Position.Location, 10.0);
-
+            
             // calculate distances
             foreach (RestAreaModel r in database)
             {
@@ -94,6 +93,17 @@ namespace RestArea
             me.Content = "My Location";
 
             this.mapRestArea.Children.Add(me);
+        }
+        
+        private void Map_MapResolved(object sender, EventArgs e)
+        {
+            this.DisableProgressBar();
+        }
+
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((Pivot)sender).SelectedItem == this.pviMapView)
+                this.mapRestArea.SetView(watcher.Position.Location, 10.0);
         }
 
         private void StackPanel_Tap(object sender, GestureEventArgs e)
@@ -137,11 +147,6 @@ namespace RestArea
 
                 database.Add(r);
             }
-        }
-
-        private void Map_MapResolved(object sender, EventArgs e)
-        {
-            this.DisableProgressBar();
         }
     }
 }
