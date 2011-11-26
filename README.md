@@ -1,4 +1,4 @@
-Rest Area is useful tool for every driver. It uses your current location to find the nearest rest areas around you. View the results on a map or in a list to find a location on your route. Tap on a rest area for a list of amentities at that stop, such as restrooms, vending machines, food, gas, handicap accessibility, RV facilities, picnic tables, and pet walking areas. You can also get navigation directions to each rest area.
+Rest Area is a useful tool for every driver. It uses your current location to find the nearest rest areas around you. View the results on a map or in a list to find a location on your route. Tap on a rest area for a list of amentities at that stop, such as restrooms, vending machines, food, gas, handicap accessibility, RV facilities, picnic tables, and pet walking areas. You can also get navigation directions to each rest area.
 
 Information is currently only available for the United States and parts of Canada and Mexico near the US border. Data last updated on 11/15/2011.
 
