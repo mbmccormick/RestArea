@@ -8,15 +8,14 @@ Application Development by Matt McCormick
 Graphic Design by Libby Puccinelli  
   
   
-  
 What's new in Version 1.1:  
 - Fixed start menu tile application name  
 - Fixed start menu tile to account for application name  
 - Fixed an issue with map pushpin overlap  
 - Adding Metro tilt effect to all controls  
 - Moved progress meter to system tray  
-- Distance meter on rest area details page now live updates  
-  
+- Distance meter on rest area details page now live updates
+- Adjusted icon opacity  
   
 What's new in Version 1.0:  
 - Initial release  
