@@ -4,12 +4,11 @@ Information is currently only available for the United States and parts of Canad
 
 Reast Area makes your road trip simple and convenient and is a must-have for every driver!
 
-Application Development by Matt McCormick
-
-Graphic Design by Libby Puccinelli
-
-
-
+Application Development by Matt McCormick  
+Graphic Design by Libby Puccinelli  
+  
+  
+  
 What's new in Version 1.1:  
 - Fixed start menu tile application name  
 - Fixed start menu tile to account for application name  
@@ -17,7 +16,7 @@ What's new in Version 1.1:
 - Adding Metro tilt effect to all controls  
 - Moved progress meter to system tray  
 - Distance meter on rest area details page now live updates  
-
-
+  
+  
 What's new in Version 1.0:  
 - Initial release  
