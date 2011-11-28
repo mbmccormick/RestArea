@@ -18,7 +18,7 @@
     Loaded="PhoneApplicationPage_Loaded">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot Title="REST AREA" SelectionChanged="Pivot_SelectionChanged">
+        <controls:Pivot x:Name="pivRestArea" Title="REST AREA" SelectionChanged="Pivot_SelectionChanged">
             <controls:PivotItem Name="pviMapView" Header="map view" >
                 <my:Map x:Name="mapRestArea" Mode="Road" Margin="-12,0,-12,-12" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" MapResolved="Map_MapResolved" MapPan="Map_MapPan"/>
             </controls:PivotItem>

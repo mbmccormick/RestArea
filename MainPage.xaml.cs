@@ -39,6 +39,8 @@ namespace RestArea
             watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
 
             watcher.Start();
+
+            Pivot_SelectionChanged(this.pivRestArea, null);
         }
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -110,6 +112,11 @@ namespace RestArea
                 this.EnableProgressBar();
                 this.mapRestArea.SetView(watcher.Position.Location, 10.0);
             }
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            Pivot_SelectionChanged(this.pivRestArea, null);
         }
 
         private void StackPanel_Tap(object sender, System.Windows.Input.GestureEventArgs e)
