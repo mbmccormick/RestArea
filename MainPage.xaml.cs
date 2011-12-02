@@ -45,6 +45,12 @@ namespace RestArea
 
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
         {
+            if (NavigationService.BackStack.Count<System.Windows.Navigation.JournalEntry>() > 0 &&
+                NavigationService.BackStack.Last<System.Windows.Navigation.JournalEntry>().Source.ToString().Contains("WelcomePage.xaml"))
+            {
+                NavigationService.RemoveBackEntry();
+            }
+
             // attach progress indicator
             if (progressIndicator == null)
             {
@@ -84,11 +90,18 @@ namespace RestArea
             this.lstRestArea.ItemsSource = refined;
 
             // show current location
-            Pushpin me = new Pushpin();
-            me.Location = e.Position.Location;
-            me.Content = "My Location";
+            try
+            {
+                Pushpin me = new Pushpin();
+                me.Location = e.Position.Location;
+                me.Content = "My Location";
 
-            this.mapRestArea.Children.Add(me);
+                this.mapRestArea.Children.Add(me);
+            }
+            catch (Exception ex)
+            {
+            }
+
             Map_MapPan(null, null);
         }
         

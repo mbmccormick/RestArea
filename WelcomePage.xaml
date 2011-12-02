@@ -18,6 +18,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="527"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -30,8 +31,13 @@
             <TextBlock Height="166" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBlock1" Text="Rest Area is a useful tool for every driver. This application uses your current location to find the nearest rest areas around you. You can view the results on a map or in a list to find a location on your route. Your location information is only used for this purpose and is never shared." VerticalAlignment="Top" TextWrapping="Wrap" Width="438" />
             <TextBlock Height="115" HorizontalAlignment="Left" Margin="12,193,0,0" Name="textBlock2" Text="You can opt out of sharing your location at any time by removing this application. You cannot use this application without sharing your location with Rest Area." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
             <TextBlock Height="60" HorizontalAlignment="Left" Margin="12,327,0,0" Name="textBlock3" Text="Tap Accept below to continue or Decline to exit the application." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
-            <Button Content="accept" Height="72" HorizontalAlignment="Left" Margin="0,521,0,0" Name="button1" VerticalAlignment="Top" Width="229" Click="button1_Click" />
-            <Button Content="decline" Height="72" HorizontalAlignment="Left" Margin="221,521,0,0" Name="button2" VerticalAlignment="Top" Width="229" Click="button2_Click" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.Column="0" Background="{StaticResource PhoneChromeBrush}">
+            <Button Content="accept" Height="72" HorizontalAlignment="Left" Margin="12,5,0,0" Name="button1" VerticalAlignment="Top" Width="229" Click="button1_Click" />
+            <Button Content="decline" Height="72" HorizontalAlignment="Left" Margin="245,5,0,0" Name="button2" VerticalAlignment="Top" Width="229" Click="button2_Click" />
+
+
         </Grid>
     </Grid>
 
