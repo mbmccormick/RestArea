@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.IO.IsolatedStorage;
 
 namespace RestArea
 {
@@ -36,6 +37,8 @@ namespace RestArea
 
             // Phone-specific initialization
             InitializePhoneApplication();
+
+            RootFrame.Navigating += new NavigatingCancelEventHandler(RootFrame_Navigating);
         }
 
         // Code to execute when the application is launching (eg, from Start)
@@ -70,6 +73,31 @@ namespace RestArea
             {
                 // A navigation has failed; break into the debugger
                 System.Diagnostics.Debugger.Break();
+            }
+        }
+
+        private void RootFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (e.Uri.ToString().Contains("/MainPage.xaml") != true)
+            {
+                return;
+            }
+
+            // Check if this is the first run of the application
+            if (IsolatedStorageSettings.ApplicationSettings.Contains("IsFirstRun") == false)
+            {
+                e.Cancel = true;
+                RootFrame.Dispatcher.BeginInvoke(delegate
+                {
+                    RootFrame.Navigate(new Uri("/WelcomePage.xaml", UriKind.Relative));
+                });
+            }
+            else
+            {
+                RootFrame.Dispatcher.BeginInvoke(delegate
+                {
+                    RootFrame.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+                });
             }
         }
 
