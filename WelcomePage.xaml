@@ -29,8 +29,8 @@
 
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
             <TextBlock Height="166" HorizontalAlignment="Left" Margin="12,6,0,0" Name="textBlock1" Text="Rest Area is a useful tool for every driver. This application uses your current location to find the nearest rest areas around you. You can view the results on a map or in a list to find a location on your route. Your location information is only used for this purpose and is never shared." VerticalAlignment="Top" TextWrapping="Wrap" Width="438" />
-            <TextBlock Height="115" HorizontalAlignment="Left" Margin="12,193,0,0" Name="textBlock2" Text="You can opt out of sharing your location at any time by removing this application. You cannot use this application without sharing your location with Rest Area." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
-            <TextBlock Height="60" HorizontalAlignment="Left" Margin="12,327,0,0" Name="textBlock3" Text="Tap Accept below to continue or Decline to exit the application." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
+            <TextBlock Height="95" HorizontalAlignment="Left" Margin="12,193,0,0" Name="textBlock2" Text="You can opt out of sharing your location at any time from within the application. However, Rest Area works best with location features enabled." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
+            <TextBlock Height="60" HorizontalAlignment="Left" Margin="12,299,0,0" Name="textBlock3" Text="Tap Accept below to continue or Decline to exit the application." TextWrapping="Wrap" VerticalAlignment="Top" Width="438" />
         </Grid>
 
         <Grid Grid.Row="2" Grid.Column="0" Background="{StaticResource PhoneChromeBrush}">

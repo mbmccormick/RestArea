@@ -15,6 +15,7 @@ using System.Device.Location;
 using RestArea.Common;
 using Microsoft.Phone.Controls.Maps;
 using Microsoft.Phone.Shell;
+using System.IO.IsolatedStorage;
 
 namespace RestArea
 {
@@ -37,8 +38,35 @@ namespace RestArea
             watcher = new GeoCoordinateWatcher(GeoPositionAccuracy.High);
             watcher.MovementThreshold = 200;
             watcher.PositionChanged += new EventHandler<GeoPositionChangedEventArgs<GeoCoordinate>>(watcher_PositionChanged);
+            watcher.StatusChanged += new EventHandler<GeoPositionStatusChangedEventArgs>(watcher_StatusChanged);
 
-            watcher.Start();
+            if (IsolatedStorageSettings.ApplicationSettings.Contains("IsLocationEnabled") == true)
+            {
+                if ((bool)IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] == true)
+                {
+                    watcher.Start();
+                    IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] = true;
+                    ((ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = "turn off location";
+                    
+                    this.mapRestArea.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] = false;
+                    ((ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = "turn on location";
+
+                    this.mapRestArea.Visibility = System.Windows.Visibility.Collapsed;
+                    MessageBox.Show("You have disabled location services for this application. Rest Area works best when this feature is enabled.", "Location Disabled", MessageBoxButton.OK);
+                }
+            }
+            else
+            {
+                watcher.Start();
+                IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] = true;
+                ((ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = "turn off location";
+
+                this.mapRestArea.Visibility = System.Windows.Visibility.Visible;
+            }
 
             Pivot_SelectionChanged(this.pivRestArea, null);
         }
@@ -60,51 +88,61 @@ namespace RestArea
             }
         }
 
+        void watcher_StatusChanged(object sender, GeoPositionStatusChangedEventArgs e)
+        {
+            if (e.Status == GeoPositionStatus.Disabled)
+            {
+                MessageBox.Show("Location services are not enabled for your phone. Rest Area works best when this feature is enabled.", "Location Disabled", MessageBoxButton.OK);
+            }
+            else if (e.Status == GeoPositionStatus.NoData)
+            {
+                MessageBox.Show("Your location could not be determined, please try again later. Rest Area will use your most recent location until a new location is determined.", "Location Unavailable", MessageBoxButton.OK);
+            }
+        }
+
         void watcher_PositionChanged(object sender, GeoPositionChangedEventArgs<GeoCoordinate> e)
         {
-            this.EnableProgressBar();
-
-            // clear the map
-            this.mapRestArea.Children.Clear();
-            
-            // calculate distances
-            foreach (RestAreaModel r in database)
+            if (watcher.Status == GeoPositionStatus.Ready &&
+                e.Position.Location.IsUnknown == false)
             {
-                r.Distance = Utilities.ConvertToMiles(Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, r.Latitude, r.Longitude));
-                r.Description = r.Distance.ToString("0.00") + " miles away";
-            }
+                this.EnableProgressBar();
 
-            List<RestAreaModel> refined = database.OrderBy(r => r.Distance).Take(25).ToList();
-            foreach (RestAreaModel r in refined.Reverse<RestAreaModel>())
-            {
-                Pushpin p = new Pushpin();
-                p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
-                p.Background = (SolidColorBrush)Resources["PhoneAccentBrush"];
-                p.Content = r.Name;
-                p.DataContext = r;
-                p.Tap += new EventHandler<System.Windows.Input.GestureEventArgs>(Pushpin_Tap);
+                // clear the map
+                this.mapRestArea.Children.Clear();
 
-                this.mapRestArea.Children.Add(p);
-            }
+                // calculate distances
+                foreach (RestAreaModel r in database)
+                {
+                    r.Distance = Utilities.ConvertToMiles(Utilities.Distance(e.Position.Location.Latitude, e.Position.Location.Longitude, r.Latitude, r.Longitude));
+                    r.Description = r.Distance.ToString("0.00") + " miles away";
+                }
 
-            this.lstRestArea.ItemsSource = refined;
+                List<RestAreaModel> refined = database.OrderBy(r => r.Distance).Take(25).ToList();
+                foreach (RestAreaModel r in refined.Reverse<RestAreaModel>())
+                {
+                    Pushpin p = new Pushpin();
+                    p.Location = new GeoCoordinate(r.Latitude, r.Longitude);
+                    p.Background = (SolidColorBrush)Resources["PhoneAccentBrush"];
+                    p.Content = r.Name;
+                    p.DataContext = r;
+                    p.Tap += new EventHandler<System.Windows.Input.GestureEventArgs>(Pushpin_Tap);
 
-            // show current location
-            try
-            {
+                    this.mapRestArea.Children.Add(p);
+                }
+
+                this.lstRestArea.ItemsSource = refined;
+
+                // show current location
                 Pushpin me = new Pushpin();
                 me.Location = e.Position.Location;
                 me.Content = "My Location";
 
                 this.mapRestArea.Children.Add(me);
-            }
-            catch (Exception ex)
-            {
-            }
 
-            Map_MapPan(null, null);
+                Map_MapPan(null, null);
+            }
         }
-        
+
         private void Map_MapResolved(object sender, EventArgs e)
         {
             this.DisableProgressBar();
@@ -146,6 +184,26 @@ namespace RestArea
             NavigationService.Navigate(new Uri("/DetailsPage.xaml?name=" + r.Name + "&description=" + r.Description + "&options=" + r.Options + "&lat1=" + watcher.Position.Location.Latitude + "&lon1=" + watcher.Position.Location.Longitude + "&lat2=" + r.Latitude + "&lon2=" + r.Longitude, UriKind.Relative));
         }
 
+        private void mnuToggleLocation_Click(object sender, EventArgs e)
+        {
+            if (((ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text == "turn off location")
+            {
+                watcher.Stop();
+                IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] = false;
+                ((ApplicationBarMenuItem)this.ApplicationBar.MenuItems[0]).Text = "turn on location";
+
+                this.mapRestArea.Visibility = System.Windows.Visibility.Collapsed;
+                MessageBox.Show("You have disabled location services for this application. Rest Area works best when this feature is enabled.", "Location Disabled", MessageBoxButton.OK);
+            }
+            else
+            {
+                int index = new Random().Next(10000, 99999);
+
+                IsolatedStorageSettings.ApplicationSettings["IsLocationEnabled"] = true;
+                NavigationService.Navigate(new Uri("/MainPage.xaml?r=" + index, UriKind.Relative));
+            }
+        }
+
         private void EnableProgressBar()
         {
             if (progressIndicator != null)
@@ -154,7 +212,7 @@ namespace RestArea
 
         private void DisableProgressBar()
         {
-            if (progressIndicator != null) 
+            if (progressIndicator != null)
                 progressIndicator.IsIndeterminate = false;
         }
 

@@ -21,7 +21,7 @@
         <controls:Pivot x:Name="pivRestArea" Title="REST AREA" SelectionChanged="Pivot_SelectionChanged">
             <controls:PivotItem Name="pviMapView" Header="map view" >
                 <my:Map x:Name="mapRestArea" Mode="Road" Margin="-12,0,-12,-12" CredentialsProvider="AjeRbF5SN4mPdesrT0tBUM4BVw4L7gutyV9OjgxmJ7lHDOcyZL46aAJuRnhOC1rK" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" MapResolved="Map_MapResolved" MapPan="Map_MapPan"/>
-            </controls:PivotItem>
+                </controls:PivotItem>
 
             <controls:PivotItem Name="pviListView" Header="list view">
                 <ListBox x:Name="lstRestArea" Margin="0,0,-12,0">
@@ -36,8 +36,15 @@
                 </ListBox>
             </controls:PivotItem>
         </controls:Pivot>
-
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized" Opacity="0.8">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="mnuToggleLocation" Text="turn off location" Click="mnuToggleLocation_Click"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 
     <toolkit:TransitionService.NavigationInTransition>
         <toolkit:NavigationInTransition>
